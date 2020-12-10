@@ -1,0 +1,27 @@
+
+{
+  "compilerOptions": {
+    "target": "es5",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "baseUrl": "./",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "types": [
+        "node"
+    ],
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "outDir": "./public",
+    },
+    "include": [
+        "**/*"
+    ],
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+}
