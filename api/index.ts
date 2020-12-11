@@ -1,4 +1,5 @@
-import { ApolloServer, gql } from 'apollo-server-micro';
+import Koa from 'koa';
+import { ApolloServer, gql } from 'apollo-server-koa';
 import { makeExecutableSchema } from 'graphql-tools';
 
 const books = [
@@ -39,6 +40,13 @@ const server = new ApolloServer({
   playground: true,
 });
 
-const graphqlPath = '/api/graphql'
-const graphqlHandler = server.createHandler({ path: graphqlPath });
-export default graphqlHandler
+const app = new Koa();
+server.applyMiddleware({ app });
+
+const port = process.env.PORT || 8081
+
+app.listen({ port }, () =>
+  console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`),
+);
+
+export default app.callback()
