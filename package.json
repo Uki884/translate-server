@@ -6,7 +6,8 @@
     "dev": "tsc && npm run start",
     "build": "tsc",
     "start": "node ./public/index.js",
-    "deploy": "vercel"
+    "deploy": "vercel",
+    "deploy:production": "vercel --prod"
   },
   "author": "Uki884",
   "license": "ISC",
