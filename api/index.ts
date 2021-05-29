@@ -2,12 +2,16 @@ import Koa from 'koa';
 import Router from 'koa-router'
 import puppeteer from 'puppeteer-core'
 import chrome from 'chrome-aws-lambda';
+import cors from '@koa/cors'
+
+const cors = require('@koa/cors');
 
 const app = new Koa();
 const router = new Router()
+app.use(cors());
 
 const waitVisibleText = async (target, page) => {
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(100);
   const element = await page.$(target);
   const betItemTextValue = await element.getProperty('textContent');
   const betValue = await betItemTextValue.jsonValue();
