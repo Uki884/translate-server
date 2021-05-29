@@ -1,6 +1,7 @@
 import Koa from 'koa';
 import Router from 'koa-router'
-import puppeteer from 'puppeteer'
+import puppeteer from 'puppeteer-core'
+import chrome from 'chrome-aws-lambda';
 
 const app = new Koa();
 const router = new Router()
@@ -25,7 +26,7 @@ router.get('/translate', async (ctx) => {
     ctx.body = '翻訳する文字を指定してください'
     return
   }
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: chrome.args, executablePath: await chrome.executablePath, headless: chrome.headless });
   const page = await browser.newPage();
   await page.goto(`https://www.deepl.com/translator#en/ja/${text}`, { "waitUntil": "domcontentloaded" });
   await waitVisibleText('#target-dummydiv', page)

@@ -7,17 +7,19 @@
     "build": "tsc",
     "start": "node ./public/index.js",
     "deploy": "vercel",
-    "deploy:production": "vercel --prod"
+    "deploy:prod": "vercel --prod"
   },
   "author": "Uki884",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^13.1.1",
+    "chrome-aws-lambda": "^9.1.0",
     "dotenv": "^8.2.0",
     "koa": "^2.13.1",
     "koa-router": "^10.0.0",
     "nodemon": "^2.0.2",
     "puppeteer": "^9.1.1",
+    "puppeteer-core": "9.1.0",
     "ts-node": "^8.5.4",
     "vercel": "^21.0.1"
   },
